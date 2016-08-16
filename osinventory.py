@@ -1,11 +1,10 @@
-
 import argparse
 import logging
 import os
 import sys
 import prettytable
-import inspect 
-import threading 
+import inspect
+import threading
 import time
 
 import keystoneclient.v2_0.client as keystone
@@ -25,9 +24,10 @@ logger = logging.getLogger()
 
 
 def format_flavor_details(f):
-    #f = client.flavors.get(flavor_id).to_dict()
-    return '|'.join([ str(f['vcpus']) + 'VCPU', str(f['ram']) +
-                      'MB RAM', str(f['disk'])+'GB Disk'])
+    # f = client.flavors.get(flavor_id).to_dict()
+    return '|'.join([str(f['vcpus']) + 'VCPU', str(f['ram']) +
+                     'MB RAM', str(f['disk']) + 'GB Disk'])
+
 
 def get_server_image_name(client, server):
     try:
@@ -35,6 +35,7 @@ def get_server_image_name(client, server):
     except Exception as e:
         name = '--'
     return name
+
 
 def get_image_category(image, user_tenant_id):
     """Get image category
@@ -63,14 +64,16 @@ def session_create(config):
                        tenant_id=config['project'])
     return session.Session(auth=auth)
 
-def format_network(name,liste):
+
+def format_network(name, liste):
     try:
-        network = name+'='
+        network = name + '='
         for e in liste:
-            network += e['addr']+':'+e['OS-EXT-IPS:type']+','
+            network += e['addr'] + ':' + e['OS-EXT-IPS:type'] + ','
         return network.rstrip(',')
     except KeyError as e:
         pass
+
 
 class OpenstackUtils():
     def __init__(self, config):
@@ -82,12 +85,11 @@ class OpenstackUtils():
                                                auth_url=config['auth_url'],
                                                region_name=config['region_name'])
 
-        heat_url = self.keystone_client\
-                       .service_catalog.url_for(service_type='orchestration',
-                                            endpoint_type='publicURL')
+        heat_url = self.keystone_client \
+            .service_catalog.url_for(service_type='orchestration',
+                                     endpoint_type='publicURL')
 
-
-        self.nova_client = nova.Client('2.1',region_name=config['region_name'], session=sess)
+        self.nova_client = nova.Client('2.1', region_name=config['region_name'], session=sess)
         self.cinder_client = cinder.Client('2', region_name=config['region_name'], session=sess)
         self.glance_client = glance.Client('2', region_name=config['region_name'], session=sess)
         self.neutron_client = neutron.Client(region_name=config['region_name'], session=sess)
@@ -95,75 +97,131 @@ class OpenstackUtils():
 
         functions = []
         threads = []
-        self.print_servers=self.print_ips=self.print_scgps=self.print_keys=False
-        self.print_volumes=self.print_snapshots=self.print_backups=False
-        self.print_netowrks=self.print_routers=False
-        self.print_images=self.print_owned_images=self.print_shared_imges=False
-        self.print_cloudwatt_images=self.print_snapshots_images=False
-        self.print_lbass=self.print_members=self.print_stacks=False
+        self.print_servers = self.print_ips = self.print_scgps = self.print_keys = False
+        self.print_volumes = self.print_snapshots = self.print_backups = False
+        self.print_netowrks = self.print_routers = False
+        self.print_images = self.print_owned_images = self.print_shared_imges = False
+        self.print_cloudwatt_images = self.print_snapshots_images = False
+        self.print_lbass = self.print_members = self.print_stacks = False
 
-        
         def get_limits():
-            self.nova_limits = self.nova_client.limits.get().to_dict()['absolute']
-            self.cinder_limits = self.cinder_client.limits.get().to_dict()['absolute']
+            try:
+                self.nova_limits = self.nova_client.limits.get().to_dict()['absolute']
+                self.cinder_limits = self.cinder_client.limits.get().to_dict()['absolute']
+            except Exception as e:
+                self.nova_limits = self.cinder_limits = []
+                logging.error("Could not retrieve limits")
+
         functions.append(get_limits)
 
         def get_servers():
-            self.flavors_dict = {}
-            self.servers = map(lambda x:x.to_dict(), self.nova_client.servers.list())
-            map(lambda x:self.flavors_dict.update({x.id:x}), self.nova_client.flavors.list())
+            try:
+                self.flavors_dict = {}
+                self.servers = map(lambda x: x.to_dict(), self.nova_client.servers.list())
+                map(lambda x: self.flavors_dict.update({x.id: x}), self.nova_client.flavors.list())
+            except Exception as e:
+                self.servers = []
+                logging.error("Could not retrieve list of servers")
+
         functions.append(get_servers)
 
         def get_floating_ips():
-            self.ips = self.nova_client.floating_ips.list()
+            try:
+                self.ips = self.nova_client.floating_ips.list()
+            except Exception as e:
+                self.ips = []
+                logging.error("Could not retrieve list of floating IPs")
+
         functions.append(get_floating_ips)
 
         def get_securitygps():
-            self.securitygps = map(lambda x:x.to_dict(), self.nova_client\
-                                                   .security_groups.list())
+            try:
+                self.securitygps = map(lambda x: x.to_dict(), self.nova_client \
+                                       .security_groups.list())
+            except Exception as e:
+                self.securitygps = []
+                logging.error("Could not retrieve list of security groups")
+
         functions.append(get_securitygps)
 
         def get_keys():
-            self.keys = self.nova_client.keypairs.list()
-        functions.append(get_keys)    
+            try:
+                self.keys = self.nova_client.keypairs.list()
+            except Exception as e:
+                self.keys = []
+                logging.error("Could not retrieve list of keys")
+
+        functions.append(get_keys)
 
         def get_images(project_id=config['project']):
-            self.images_dict = {}
-            self.images = []
-            for image in self.glance_client.images.list():
-                self.images.append(image)
-            copy_images = self.images
-            map(lambda x:self.images_dict.update({x.id:x}), copy_images)
+            try:
+                self.images_dict = {}
+                self.images = []
+                for image in self.glance_client.images.list():
+                    self.images.append(image)
+                copy_images = self.images
+                map(lambda x: self.images_dict.update({x.id: x}), copy_images)
+            except Exception as e:
+                logging.error("Could not retrieve list of images")
 
         functions.append(get_images)
 
         def get_volumes():
-            self.volumes =  self.cinder_client.volumes.list()
+            try:
+                self.volumes = self.cinder_client.volumes.list()
+            except Exception as e:
+                self.volumes = []
+                logging.error("Could not retrieve list of volumes")
+
         functions.append(get_volumes)
 
         def get_volumes_snapshots():
-            self.snapshots = self.cinder_client.volume_snapshots.list()
+            try:
+                self.snapshots = self.cinder_client.volume_snapshots.list()
+            except Exception as e:
+                self.snapshots = []
+                logging.error("Could not retrieve list of snapshots")
+
         functions.append(get_volumes_snapshots)
 
         def get_volumes_backups():
-            self.backups = self.cinder_client.backups.list()
-        functions.append(get_volumes_backups)    
+            try:
+                self.backups = self.cinder_client.backups.list()
+            except Exception as e:
+                self.backups = []
+                logging.error("Could not retrieve list of backups")
+
+        functions.append(get_volumes_backups)
 
         def get_networks():
-            self.routers = self.neutron_client.list_routers()['routers']
-            self.networks = self.neutron_client.list_networks()['networks']
-            self.subnets = self.neutron_client.list_subnets()['subnets']
+            try:
+                self.routers = self.neutron_client.list_routers()['routers']
+                self.networks = self.neutron_client.list_networks()['networks']
+                self.subnets = self.neutron_client.list_subnets()['subnets']
+            except Exception as e:
+                self.routers = self.networks = self.subnets = []
+                logging.error("Could not retrieve list of networks")
+
         functions.append(get_networks)
 
         def get_lbass():
-               self.lbass = self.neutron_client.list_pools()['pools']
-               self.members = self.neutron_client.list_members()['members']
+            try:
+                self.lbass = self.neutron_client.list_pools()['pools']
+                self.members = self.neutron_client.list_members()['members']
+            except Exception as e:
+                self.lbass = self.members = []
+                logging.error("Could not retrieve lbass")
+
         functions.append(get_lbass)
 
         def get_stacks():
-            self.stacks = self.heat_client.stacks.list()
-        functions.append(get_stacks)
+            try:
+                self.stacks = self.heat_client.stacks.list()
+            except Exception as e:
+                self.stacks = []
+                logging.error("Could not retrieve list of stacks")
 
+        functions.append(get_stacks)
 
         for func in functions:
             t = threading.Thread(name=func, target=func)
@@ -173,241 +231,271 @@ class OpenstackUtils():
             t.join()
 
     def print_ressources(self):
+        try:
+            # Print Limits and Quotas Usage
+            nova_limits = self.nova_limits
+            cinder_limits = self.cinder_limits
+            limits_table = prettytable.PrettyTable(['Resource', 'Max', 'Used'])
+            limits_table.add_row(['Servers', nova_limits['maxTotalInstances'],
+                                  nova_limits['totalInstancesUsed']])
+            limits_table.add_row(['Volumes', cinder_limits['maxTotalVolumes'],
+                                  cinder_limits['totalVolumesUsed']])
+            limits_table.add_row(['V_Snapshots', cinder_limits['maxTotalSnapshots'],
+                                  cinder_limits['totalSnapshotsUsed']])
+            limits_table.add_row(['V_Backups', cinder_limits['maxTotalBackups'],
+                                  cinder_limits['totalBackupsUsed']])
 
-        #Print Limits and Quotas Usage
-        nova_limits = self.nova_limits
-        cinder_limits = self.cinder_limits
-        limits_table = prettytable.PrettyTable(['Resource', 'Max', 'Used'])
-        limits_table.add_row(['Servers',nova_limits['maxTotalInstances'],
-                       nova_limits['totalInstancesUsed']])
-        limits_table.add_row(['Volumes',cinder_limits['maxTotalVolumes'],
-                       cinder_limits['totalVolumesUsed']])
-        limits_table.add_row(['V_Snapshots',cinder_limits['maxTotalSnapshots'],
-                       cinder_limits['totalSnapshotsUsed']])
-        limits_table.add_row(['V_Backups',cinder_limits['maxTotalBackups'],
-                       cinder_limits['totalBackupsUsed']])
+            limits_table.add_row(['RAM (MB)', nova_limits['maxTotalRAMSize'],
+                                  nova_limits['totalRAMUsed']])
+            limits_table.add_row(['Cores', nova_limits['maxTotalCores'],
+                                  nova_limits['totalCoresUsed']])
+            limits_table.add_row(['VolumesGigabytes',
+                                  cinder_limits['maxTotalBackupGigabytes'],
+                                  cinder_limits['totalGigabytesUsed']])
+            limits_table.add_row(['BackupGigabyte',
+                                  cinder_limits['totalBackupGigabytesUsed'],
+                                  cinder_limits['totalBackupGigabytesUsed']])
+        except Exception as e:
+            pass
 
-        limits_table.add_row(['RAM (MB)',nova_limits['maxTotalRAMSize'],
-                       nova_limits['totalRAMUsed'] ])
-        limits_table.add_row(['Cores',nova_limits['maxTotalCores'],
-                       nova_limits['totalCoresUsed'] ])
-        limits_table.add_row(['VolumesGigabytes',
-                       cinder_limits['maxTotalBackupGigabytes'],
-                       cinder_limits['totalGigabytesUsed'] ])
-        limits_table.add_row(['BackupGigabyte',
-                       cinder_limits['totalBackupGigabytesUsed'],
-                       cinder_limits['totalBackupGigabytesUsed'] ])
-
-
-        #Print List of Servers
-        columns = ['ID', 'Name', 'Status', 'Image Name', 'Flavor Details','Key Name', 'Networks']
-        servers_table = prettytable.PrettyTable(columns)
-        for s in self.servers:
-            self.print_networks = True
-            networks = ''
-            if s['addresses']:
-                networks =  s['addresses'].keys()[0]+'='
-                for value in s['addresses'].values():
-                    for v in  value:
-                        networks += v['addr']+', '
-            s['networks'] = networks.rstrip(', ')
-            flavor = self.flavors_dict[s['flavor']['id']].to_dict()
-            s['flavor details'] = format_flavor_details(flavor)
-            try:
-                s['image name'] = self.images_dict[s['image']['id']].to_dict().get('name','-')
-            except Exception as e:
-                s['image name'] = '-'            	
-
-            servers_table.add_row([s['id'], s.get('name', '-'), s['status'],s.get('image name', '-'),
-                           s['flavor details'], s['key_name'], s['networks']])  
-
-           
-        #Print List of IPs
-        columns = ['ID', 'Fixed IP', 'IP', 'Server ID']
-        ips_table = prettytable.PrettyTable(columns)
-        for ip in self.ips:
-            self.print_ips = True
-            ip_dict = ip.to_dict()
-            if not ip.instance_id:
-                ip.instance_id = '***Not Used***'
-            if not ip.fixed_ip:
-                ip.instance_id = '-'
-            ips_table.add_row([ip.id, ip.fixed_ip, ip.ip,
-                           ip.instance_id ])
-
-        #Print List of Keys
-        columns = ['Name', 'Fingerprint']
-        keys_table = prettytable.PrettyTable(columns)
-        for k in self.keys:
-            self.print_keys = True
-            keys_table.add_row([k.name,k.fingerprint])
-
-
-        #Print List of Secgps
-        columns = ['Name', 'Description', 'Protocol','From Port', 'To Port', 'IP Range']
-        secgps_table = prettytable.PrettyTable(columns)
-        for secgp in self.securitygps:
-            self.print_scgps = True
-            secgps_table.add_row([secgp.get('name', '-'), secgp['description'], '', '', '', ''])
-            for sec in filter(None,secgp['rules']):
-                secgps_table.add_row(['', '', sec['ip_protocol'], sec['from_port'],
-                                sec['to_port'], sec['ip_range']])
-
-        #Print List of Images
-        images = []
-        cloudwatt_images = False
-        shared_images = False
-        snapshots = False
-        all_images = False
-        owned_images = False
-
-        columns = ['ID', 'Name', 'Status','Size', 'Disk format', 'Created_at']
-        owned_table = prettytable.PrettyTable(columns)
-        shared_table = prettytable.PrettyTable(columns)
-        cloudwatt_table = prettytable.PrettyTable(columns)
-        snapshots_table = prettytable.PrettyTable(columns)
-        all_table = prettytable.PrettyTable(columns)
-
-        for img in self.images:
-            self.print_images = True
-            category = get_image_category(img, config['project'])
-            if category == 'project':
-                self.print_owned_images = True
-                owned_table.add_row([img.id, img.to_dict().get('name','-'), img.status,img.size,
-                img.disk_format, img.created_at])
-            if category == 'shared':
-                self.print_shared_imges = True
-                shared_table.add_row([img.id, img.to_dict().get('name','-'), img.status,img.size,
-                img.disk_format, img.created_at])
-            elif category =='cloudwatt':
-                self.print_cloudwatt_images = True
-                cloudwatt_table.add_row([img.id, img.to_dict().get('name','-'), img.status,img.size,
-                img.disk_format, img.created_at])
-             
-            if 'image_type' in img.properties:
-                if img.properties['image_type'] == "snapshot":
-                    self.print_snapshots_images = True
-                    snapshots_table.add_row([img.id, img.to_dict().get('name','-'), img.status,img.size,
-                    img.disk_format, img.created_at])
-            all_table.add_row([img.id, img.to_dict().get('name','-'), img.status,img.size,
-                               img.disk_format, img.created_at])
-
-
-        #Print List of Volumes
-        columns = ['ID', 'Status', 'Name',
-                   'Size', 'Volume Type', 'Bootable',
-                   'Attached_to', 'Snapshot ID', 'Created at']
-        volumes_table = prettytable.PrettyTable(columns)
-        for volume in self.volumes:
-            self.print_volumes = True
-            if volume.snapshot_id is None:
-                volume.snapshot_id = '***-***'
-            volume.Attached_to = '***Not Attached***'
-            for attch in volume.attachments:
+        # Print List of Servers
+        try:
+            columns = ['ID', 'Name', 'Status', 'Image Name', 'Flavor Details', 'Key Name', 'Networks']
+            servers_table = prettytable.PrettyTable(columns)
+            for s in self.servers:
+                self.print_networks = True
+                networks = ''
+                if s['addresses']:
+                    networks = s['addresses'].keys()[0] + '='
+                    for value in s['addresses'].values():
+                        for v in value:
+                            networks += v['addr'] + ', '
+                s['networks'] = networks.rstrip(', ')
+                flavor = self.flavors_dict[s['flavor']['id']].to_dict()
+                s['flavor details'] = format_flavor_details(flavor)
                 try:
-                    volume.Attached_to = self.nova_client.servers.get(attch['server_id']).to_dict()['name']
+                    s['image name'] = self.images_dict[s['image']['id']].to_dict().get('name', '-')
                 except Exception as e:
-                    pass
-            volumes_table.add_row([volume.id, volume.status, volume.to_dict().get('name', '-'), volume.size,
-                          volume.volume_type, volume.bootable,
-                          volume.Attached_to, volume.snapshot_id,
-                          volume.created_at])
+                    s['image name'] = '-'
 
-        #print Volumes Snapshots
-        columns = ['ID', 'Status', 'Name', 'Description','Size', 'Created_at']
-        v_snapshots_table = prettytable.PrettyTable(columns)
+                servers_table.add_row([s['id'], s.get('name', '-'), s['status'], s.get('image name', '-'),
+                                       s['flavor details'], s['key_name'], s['networks']])
+        except Exception as e:
+            pass
 
-        for s in self.snapshots:
-        	self.print_snapshots = True
-        	v_snapshots_table.add_row([s.id, s.status, s.to_dict().get('name', '-'), s.description,
-                                     s.size, s.created_at])
+        # Print List of IPs
+        try:
+            columns = ['ID', 'Fixed IP', 'IP', 'Server ID']
+            ips_table = prettytable.PrettyTable(columns)
+            for ip in self.ips:
+                self.print_ips = True
+                ip_dict = ip.to_dict()
+                if not ip.instance_id:
+                    ip.instance_id = '***Not Used***'
+                if not ip.fixed_ip:
+                    ip.instance_id = '-'
+                ips_table.add_row([ip.id, ip.fixed_ip, ip.ip,
+                                   ip.instance_id])
 
-        #print Volumes Backups
-        backups_table = prettytable.PrettyTable(columns)
+        except Exception as e:
+            pass
 
-        for b in self.backups:
-            self.print_backups = True
-            backups_table.add_row([s.id, s.status, s.to_dict().get('name', '-'), s.description,
-                                     s.size, s.created_at])
-      
-        routers_table = prettytable.PrettyTable(['ID', 'Name', 'Status', 'Network ID'])
-        networks_table = prettytable.PrettyTable(['Name', 'Status', 'Subnet','Subnet ID',
-                                             'Subnet Allocation Pool', 'Gateway IP',
-                                             'CIDR'])
+        # Print List of Keys
+        try:
+            columns = ['Name', 'Fingerprint']
+            keys_table = prettytable.PrettyTable(columns)
+            for k in self.keys:
+                self.print_keys = True
+                keys_table.add_row([k.name, k.fingerprint])
+        except Exception as e:
+            pass
 
-        networks = {}
-        subnets = {}
-        routers = {}
-        routers_details = []
-        for subnet in self.subnets:
-            subnets[subnet['id']] = subnet
+        # Print List of Secgps
+        try:
+            columns = ['Name', 'Description', 'Protocol', 'From Port', 'To Port', 'IP Range']
+            secgps_table = prettytable.PrettyTable(columns)
+            for secgp in self.securitygps:
+                self.print_scgps = True
+                secgps_table.add_row([secgp.get('name', '-'), secgp['description'], '', '', '', ''])
+                for sec in filter(None, secgp['rules']):
+                    secgps_table.add_row(['', '', sec['ip_protocol'], sec['from_port'],
+                                          sec['to_port'], sec['ip_range']])
+        except Exception as e:
+            pass
 
-        routers = self.routers
+        # Print List of Images
+        try:
+            images = []
+            cloudwatt_images = False
+            shared_images = False
+            snapshots = False
+            all_images = False
+            owned_images = False
 
-        for network in self.networks:
-            network['subnet_details'] = []
-            network['router_details'] = []
-            for subnet in network['subnets']:
+            columns = ['ID', 'Name', 'Status', 'Size', 'Disk format', 'Created_at']
+            owned_table = prettytable.PrettyTable(columns)
+            shared_table = prettytable.PrettyTable(columns)
+            cloudwatt_table = prettytable.PrettyTable(columns)
+            snapshots_table = prettytable.PrettyTable(columns)
+            all_table = prettytable.PrettyTable(columns)
+
+            for img in self.images:
+                self.print_images = True
+                category = get_image_category(img, config['project'])
+                if category == 'project':
+                    self.print_owned_images = True
+                    owned_table.add_row([img.id, img.to_dict().get('name', '-'), img.status, img.size,
+                                         img.disk_format, img.created_at])
+                if category == 'shared':
+                    self.print_shared_imges = True
+                    shared_table.add_row([img.id, img.to_dict().get('name', '-'), img.status, img.size,
+                                          img.disk_format, img.created_at])
+                elif category == 'cloudwatt':
+                    self.print_cloudwatt_images = True
+                    cloudwatt_table.add_row([img.id, img.to_dict().get('name', '-'), img.status, img.size,
+                                             img.disk_format, img.created_at])
+
+                if 'image_type' in img.properties:
+                    if img.properties['image_type'] == "snapshot":
+                        self.print_snapshots_images = True
+                        snapshots_table.add_row([img.id, img.to_dict().get('name', '-'), img.status, img.size,
+                                                 img.disk_format, img.created_at])
+                all_table.add_row([img.id, img.to_dict().get('name', '-'), img.status, img.size,
+                                   img.disk_format, img.created_at])
+        except Exception as e:
+            pass
+
+        # Print List of Volumes
+        try:
+            columns = ['ID', 'Status', 'Name',
+                       'Size', 'Volume Type', 'Bootable',
+                       'Attached_to', 'Snapshot ID', 'Created at']
+            volumes_table = prettytable.PrettyTable(columns)
+            for volume in self.volumes:
+                self.print_volumes = True
+                if volume.snapshot_id is None:
+                    volume.snapshot_id = '***-***'
+                volume.Attached_to = '***Not Attached***'
+                for attch in volume.attachments:
+                    try:
+                        volume.Attached_to = self.nova_client.servers.get(attch['server_id']).to_dict()['name']
+                    except Exception as e:
+                        pass
+                volumes_table.add_row([volume.id, volume.status, volume.to_dict().get('name', '-'), volume.size,
+                                       volume.volume_type, volume.bootable,
+                                       volume.Attached_to, volume.snapshot_id,
+                                       volume.created_at])
+        except Exception as e:
+            pass
+
+        # print Volumes Snapshots
+        try:
+            columns = ['ID', 'Status', 'Name', 'Description', 'Size', 'Created_at']
+            v_snapshots_table = prettytable.PrettyTable(columns)
+
+            for s in self.snapshots:
+                self.print_snapshots = True
+                v_snapshots_table.add_row([s.id, s.status, s.to_dict().get('name', '-'), s.description,
+                                           s.size, s.created_at])
+        except Exception as e:
+            pass
+
+        # print Volumes Backups
+        try:
+            backups_table = prettytable.PrettyTable(columns)
+
+            for b in self.backups:
+                self.print_backups = True
+                backups_table.add_row([s.id, s.status, s.to_dict().get('name', '-'), s.description,
+                                       s.size, s.created_at])
+
+            routers_table = prettytable.PrettyTable(['ID', 'Name', 'Status', 'Network ID'])
+            networks_table = prettytable.PrettyTable(['Name', 'Status', 'Subnet', 'Subnet ID',
+                                                      'Subnet Allocation Pool', 'Gateway IP',
+                                                      'CIDR'])
+
+            networks = {}
+            subnets = {}
+            routers = {}
+            routers_details = []
+            for subnet in self.subnets:
+                subnets[subnet['id']] = subnet
+
+            routers = self.routers
+
+            for network in self.networks:
+                network['subnet_details'] = []
+                network['router_details'] = []
+                for subnet in network['subnets']:
+                    try:
+                        network['subnet_details'].append(subnets[subnet])
+                        networks[network['id']] = network
+                    except Exception as e:
+                        networks[network['id']] = network
+
+            for router in routers:
+                self.print_routers = True
                 try:
-                    network['subnet_details'].append(subnets[subnet])
-                    networks[network['id']] = network
+                    router_table.add_row([router['id'], router['name'], router['status'],
+                                          router['external_gateway_info']['network_id']])
+
+                    networks[router['external_gateway_info']['network_id']] \
+                        ['router_details'].append(router)
                 except Exception as e:
-                    networks[network['id']] = network
+                    routers_table.add_row([router['id'], router['name'], router['status'], '---'])
 
-        for router in routers:
-            self.print_routers = True
-            try:
-                router_table.add_row([router['id'], router['name'], router['status'],
-                                      router['external_gateway_info']['network_id']])
+            for network in networks.values():
+                self.print_netowrks = True
+                networks_table.add_row([network.get('name', '-'), network['status'], '', '', '', '', ''])
+                for subnet in network['subnet_details']:
+                    if not subnet['name']:
+                        subnet['name'] = '---'
+                    networks_table.add_row(['', '', subnet.get('name', '-'), subnet['id'], subnet['allocation_pools'],
+                                            subnet['gateway_ip'], subnet['cidr']])
+        except Exception as e:
+            pass
 
-                networks[router['external_gateway_info']['network_id']]\
-                         ['router_details'].append(router)
-            except Exception as e:
-                routers_table.add_row([router['id'], router['name'], router['status'],'---'])
+        # Print List Of LBASS
+        try:
+            lbass = self.lbass
+            members = self.members
+            columns = ['ID', 'Name', 'Status', 'Provider',
+                       'lb_method', 'admin_state_up', 'Protocol']
+            lbass_table = prettytable.PrettyTable(columns)
+            members_table = prettytable.PrettyTable(['Name', 'Member ID', 'Member Status',
+                                                     'Member Address', 'Member Protocol Port'])
+            for lbas in lbass:
+                self.print_lbass = True
+                lbas['members'] = []
+                members_table.add_row([lbas.get('name', '-'), '', '', '', ''])
+                for m in members:
+                    self.print_members = True
+                    if m['pool_id'] == lbas['id']:
+                        members_table.add_row(['', m['id'], m['status'], m['address'], m['protocol_port']])
+                lbass_table.add_row([lbas['id'], lbas.get('name', '-'), lbas['status'],
+                                     lbas['provider'], lbas['lb_method'],
+                                     lbas['admin_state_up'], lbas['protocol']])
+        except Exception as e:
+            pass
 
-        for network in networks.values():
-            self.print_netowrks = True
-            networks_table.add_row([network.get('name', '-'), network['status'], '','',  '', '',  ''])
-            for subnet in network['subnet_details']:
-                if not subnet['name']:
-                    subnet['name'] = '---'
-                networks_table.add_row(['', '', subnet.get('name', '-'), subnet['id'], subnet['allocation_pools'],
-                                        subnet['gateway_ip'], subnet['cidr']])
-
-        #Print List Of LBASS
-        lbass = self.lbass
-        members = self.members
-        columns = ['ID', 'Name', 'Status', 'Provider',
-                   'lb_method', 'admin_state_up', 'Protocol']
-        lbass_table = prettytable.PrettyTable(columns)
-        members_table = prettytable.PrettyTable(['Name', 'Member ID', 'Member Status',
-                                                 'Member Address', 'Member Protocol Port'])
-        for lbas in lbass:
-            self.print_lbass = True
-            lbas['members'] = []
-            members_table.add_row([lbas.get('name', '-'), '', '', '', ''])
-            for m in members:
-                self.print_members = True
-                if m['pool_id'] == lbas['id'] :
-                    members_table.add_row(['', m['id'], m['status'], m['address'], m['protocol_port'] ])
-            lbass_table.add_row([lbas['id'], lbas.get('name', '-'), lbas['status'],
-                          lbas['provider'], lbas['lb_method'],
-                          lbas['admin_state_up'], lbas['protocol']])
-
-        #Print List of Stacks
-        stacks = self.stacks
-        columns = ['Stack_Name', 'Creation Time', 'Stack Status', 'Stack Status Reason']
-        stacks_table = prettytable.PrettyTable(columns) 
-        for stack in stacks :
-            self.print_stacks = True
-            stacks_table.add_row([stack.to_dict().get('stack_name', '-'), stack.creation_time, stack.stack_status, stack.stack_status_reason])
+        # Print List of Stacks
+        try:
+            stacks = self.stacks
+            columns = ['Stack_Name', 'Creation Time', 'Stack Status', 'Stack Status Reason']
+            stacks_table = prettytable.PrettyTable(columns)
+            for stack in stacks:
+                self.print_stacks = True
+                stacks_table.add_row([stack.to_dict().get('stack_name', '-'), stack.creation_time, stack.stack_status,
+                                      stack.stack_status_reason])
+        except Exception as e:
+            pass
 
         print '\nQuotas and Usage Limits\n'
         print limits_table
 
         if self.print_servers:
             print '\nList of Servers\n'
-            print servers_table  
+            print servers_table
 
         if self.print_ips:
             print '\nList of Floating IPs\n'
@@ -442,7 +530,6 @@ class OpenstackUtils():
             print volumes_table
 
         if self.print_snapshots:
-            print self.print_snapshots
             print '\nList of Volumes Snapshots\n'
             print v_snapshots_table
 
@@ -468,14 +555,14 @@ class OpenstackUtils():
             print '\nList of Stacks\n'
             print stacks_table
 
-        if(config['file']):
+        if (config['file']):
             with open('list_ressources.txt', 'w') as w:
-                w.write('\nQuotas and Usage Limits\n')  
+                w.write('\nQuotas and Usage Limits\n')
                 w.write(str(limits_table))
 
                 if self.print_servers:
                     w.write('\nList of Servers\n')
-                    w.write(str(servers_table))  
+                    w.write(str(servers_table))
 
                 if self.print_ips:
                     w.write('\nList of Floating IPs\n')
@@ -536,10 +623,9 @@ class OpenstackUtils():
                     w.write(str(stacks_table))
 
 
-
 def main():
     parser = argparse.ArgumentParser(description=
-                                     'Print resources from an Openstack'\
+                                     'Print resources from an Openstack' \
                                      'project'
                                      )
     parser.add_argument('-u', '--username', help='Openstack Username',

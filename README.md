@@ -20,10 +20,10 @@ These clients can be installed by using the `requirements.txt` if they are not a
 Usage
 -----
 
-Available options can be displayed by using `snapshot.py -h`:
+Available options can be displayed by using `osinventory.py -h`:
 
-    $python snapshot.py  --help
-    usage: snapshot.py [-h] username password project auth_url
+    $python osinventory.py  --help
+    usage: osinventory.py [-h] username password project auth_url
 
     Print resources from an Openstack project or user
 
