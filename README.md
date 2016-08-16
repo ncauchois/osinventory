@@ -1,14 +1,14 @@
-snapshot: Lists OpenStack resources in a project
+OSinventory: Lists OpenStack resources in a project
 ============================================
 
-`snapshot` is a client side script allowing an OpenStack user to list resources that are deployed/available in his/her project.
+`osinventory` is a client side script allowing an OpenStack user to list resources that are deployed/available in his/her project.
 
 Installation
 ------------
 
-Get `snapshot` source code:
+Get `osinventory` source code:
 
-    $ git clone https://github.com/cloudwatt/techblog.git
+    $ git clone git@github.com:cloudwatt/osinventory.git
 
 This script uses the OpenStack clients to connect to the services and retrieve all information about resources that where deployed in the project.
 

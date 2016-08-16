@@ -99,7 +99,7 @@ class OpenstackUtils():
         self.print_volumes=self.print_snapshots=self.print_backups=False
         self.print_netowrks=self.print_routers=False
         self.print_images=self.print_owned_images=self.print_shared_imges=False
-        self.print_cloudwatt_images=self.print_snapshots_images=
+        self.print_cloudwatt_images=self.print_snapshots_images=False
         self.print_lbass=self.print_members=self.print_stacks=False
 
         
