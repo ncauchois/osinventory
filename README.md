@@ -36,30 +36,36 @@ Available options can be displayed by using `osinventory.py -h`:
 
     optional arguments:
     -h, --help  show this help message and exit
+
+To increase efficiency, OSinventory supports simple client environment scripts also known as OpenRC files.
     
 Example
 -------
-    To execute the script you can either:
-    source your openrc.sh so that your criedentails are taken as os enviroment variable 
+
+To execute the script you can either source your openrc.sh so that your criedentails are taken as os enviroment variable :
+
     $ source openrc.sh
     $ python osinventory.py
-    or:
-    Pass your openstack cridentails as parameters where running the script:
+
+or pass your OpenStack credentails as parameters where running the script:
+
     python osinventory.py -u <username> -pwd <password>  -p <project_id> -url <authentification_url> -r <region_name>
 
-    To store the inventory result in a file, use the f flag as following:
+To store the inventory result in a file, use the f flag as following:
+
     $ python osinventory.py -f true
-    A file called list_ressources.txt will be created in the current directory containing the list of your openstack ressources
+
+A file called list_ressources.txt will be created in the current directory containing the list of your openstack ressources
 
 Listed resources
 -------
 
 The following resources will be listed:
 
-* Nova and Cinder Quoats and Usage (limits)
+* Nova and Cinder Quotas and Usage (limits)
 * Instances
 * Security groups/rules
-* Key paris
+* Key pairs
 * Owned or Private Images, Shared Images, Public Images, Cloudwatt Images and Images Snapshots
 * Volumes/volumes snapshots/volumes backups
 * Networks
