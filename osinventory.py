@@ -102,7 +102,7 @@ class OpenstackUtils():
         self.print_netowrks = self.print_routers = False
         self.print_images = self.print_owned_images = self.print_shared_imges = False
         self.print_cloudwatt_images = self.print_snapshots_images = False
-        self.print_lbass = self.print_members = self.print_stacks = False
+        self.print_lbaas_pools = self.print_members = self.print_stacks = False
 
         def get_limits():
             try:
@@ -204,15 +204,15 @@ class OpenstackUtils():
 
         functions.append(get_networks)
 
-        def get_lbass():
+        def get_lbaas():
             try:
-                self.lbass = self.neutron_client.list_pools()['pools']
+                self.lbaas_pools = self.neutron_client.list_pools()['pools']
                 self.members = self.neutron_client.list_members()['members']
             except Exception as e:
-                self.lbass = self.members = []
-                logging.error("Could not retrieve lbass")
+                self.lbaas_pools = self.members = []
+                logging.error("Could not retrieve lbaas information")
 
-        functions.append(get_lbass)
+        functions.append(get_lbaas)
 
         def get_stacks():
             try:
@@ -455,26 +455,26 @@ class OpenstackUtils():
         except Exception as e:
             pass
 
-        # Print List Of LBASS
+        # Print List Of LBAAS
         try:
-            lbass = self.lbass
+            lbaas_pools = self.lbaas_pools
             members = self.members
             columns = ['ID', 'Name', 'Status', 'Provider',
                        'lb_method', 'admin_state_up', 'Protocol']
-            lbass_table = prettytable.PrettyTable(columns)
+            lbaas_table = prettytable.PrettyTable(columns)
             members_table = prettytable.PrettyTable(['Name', 'Member ID', 'Member Status',
                                                      'Member Address', 'Member Protocol Port'])
-            for lbas in lbass:
-                self.print_lbass = True
-                lbas['members'] = []
-                members_table.add_row([lbas.get('name', '-'), '', '', '', ''])
+            for lbaas_pool in lbaas_pools:
+                self.print_lbaas_pools = True
+                lbaas_pool['members'] = []
+                members_table.add_row([lbaas_pool.get('name', '-'), '', '', '', ''])
                 for m in members:
                     self.print_members = True
-                    if m['pool_id'] == lbas['id']:
+                    if m['pool_id'] == lbaas_pool['id']:
                         members_table.add_row(['', m['id'], m['status'], m['address'], m['protocol_port']])
-                lbass_table.add_row([lbas['id'], lbas.get('name', '-'), lbas['status'],
-                                     lbas['provider'], lbas['lb_method'],
-                                     lbas['admin_state_up'], lbas['protocol']])
+                lbaas_table.add_row([lbaas_pool['id'], lbaas_pool.get('name', '-'), lbaas_pool['status'],
+                                     lbaas_pool['provider'], lbaas_pool['lb_method'],
+                                     lbaas_pool['admin_state_up'], lbaas_pool['protocol']])
         except Exception as e:
             pass
 
@@ -544,11 +544,11 @@ class OpenstackUtils():
             print '\nList of Routers\n'
             print routers_table
 
-        if self.print_lbass:
-            print '\nList of LBASS\n'
-            print lbass_table
+        if self.print_lbaas_pools:
+            print '\nList of LBAAS pools\n'
+            print lbaas_table
         if self.print_members:
-            print '\nLBASS Members\n'
+            print '\nList of LBAAS members\n'
             print members_table
 
         if self.print_stacks:
@@ -611,11 +611,11 @@ class OpenstackUtils():
                     print '\nList of Routers\n'
                     print routers_table
 
-                if self.print_lbass:
-                    w.write('\nList of LBASS\n')
-                    w.write(str(lbass_table))
+                if self.print_lbaas_pools:
+                    w.write('\nList of LBAAS pools\n')
+                    w.write(str(lbaas_table))
                 if self.print_members:
-                    w.write('\nLBASS Members\n')
+                    w.write('\nList of LBAAS members\n')
                     w.write(str(members_table))
 
                 if self.print_stacks:
