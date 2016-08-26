@@ -42,7 +42,7 @@ To increase efficiency, OSinventory supports simple client environment scripts a
 Example
 -------
 
-To execute the script you can either source your openrc.sh so that your criedentails are taken as os enviroment variable :
+To execute the script you can either source your openrc.sh so that your credentials are taken as os enviroment variable :
 
     $ source openrc.sh
     $ python osinventory.py
@@ -55,7 +55,7 @@ To store the inventory result in a file, use the f flag as following:
 
     $ python osinventory.py -f true
 
-A file called list_ressources.txt will be created in the current directory containing the list of your openstack ressources
+A file called list_ressources.txt will be created in the current directory containing the list of your OpenStack ressources
 
 Listed resources
 -------
@@ -70,7 +70,7 @@ The following resources will be listed:
 * Volumes/volumes snapshots/volumes backups
 * Networks
 * Routers
-* LBASS/LBASS Members
+* LBAAS pools and members
 * Stacks
 
 
