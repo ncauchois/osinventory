@@ -506,7 +506,7 @@ class OpenStackUtils():
             print keys_table
 
         if self.print_scgps:
-            print '\nList of Security Groupes\n'
+            print '\nList of Security groups\n'
             print secgps_table
 
         if self.print_owned_images:
@@ -573,7 +573,7 @@ class OpenStackUtils():
                     w.write(str(keys_table))
 
                 if self.print_scgps:
-                    w.write('\nList of Security Groupes\n')
+                    w.write('\nList of Security groups\n')
                     w.write(str(secgps_table))
 
                 if self.print_owned_images:
