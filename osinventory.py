@@ -75,7 +75,7 @@ def format_network(name, liste):
         pass
 
 
-class OpenstackUtils():
+class OpenStackUtils():
     def __init__(self, config):
         global sess
         sess = session_create(config)
@@ -506,7 +506,7 @@ class OpenstackUtils():
             print keys_table
 
         if self.print_scgps:
-            print '\nList of Security Groupes\n'
+            print '\nList of Security groups\n'
             print secgps_table
 
         if self.print_owned_images:
@@ -573,7 +573,7 @@ class OpenstackUtils():
                     w.write(str(keys_table))
 
                 if self.print_scgps:
-                    w.write('\nList of Security Groupes\n')
+                    w.write('\nList of Security groups\n')
                     w.write(str(secgps_table))
 
                 if self.print_owned_images:
@@ -625,16 +625,16 @@ class OpenstackUtils():
 
 def main():
     parser = argparse.ArgumentParser(description=
-                                     'Print resources from an Openstack' \
+                                     'Print resources from an OpenStack' \
                                      'project'
                                      )
-    parser.add_argument('-u', '--username', help='Openstack Username',
+    parser.add_argument('-u', '--username', help='OpenStack Username',
                         default=os.environ.get('OS_USERNAME', None),
                         required=False)
-    parser.add_argument('-pwd', '--password', help='Openstack Password',
+    parser.add_argument('-pwd', '--password', help='OpenStack Password',
                         default=os.environ.get('OS_PASSWORD', None),
                         required=False)
-    parser.add_argument('-p', '--project', help='Openstack project',
+    parser.add_argument('-p', '--project', help='OpenStack project',
                         default=os.environ.get('OS_TENANT_ID', None),
                         required=False)
     parser.add_argument('-url', '--auth_url',
@@ -670,7 +670,7 @@ def main():
 
     start_time = time.time()
     print 'Getting Ressources, Please Wait......'
-    utility = OpenstackUtils(config)
+    utility = OpenStackUtils(config)
     utility.print_ressources()
     print("--- %s seconds ---" % (time.time() - start_time))
 

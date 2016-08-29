@@ -25,7 +25,7 @@ Available options can be displayed by using `osinventory.py -h`:
     $python osinventory.py  --help
     usage: osinventory.py [-h] username password project auth_url
 
-    Print resources from an Openstack project or user
+    Print resources from an OpenStack project or user
 
     positional arguments:
         username    A user name with access to the project
