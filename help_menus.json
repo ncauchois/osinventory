@@ -1,0 +1,42 @@
+{
+   "Notifications":"",
+   "help-menus":{
+      "French":{
+         "Overview":{
+            "Notre Offre":{
+               "Produit":"https://www.cloudwatt.com/fr/produits/",
+               "Solutions":"https://www.cloudwatt.com/fr/solutions/",
+               "Référentiels des APIs":"https://dev.cloudwatt.com/fr/doc/api/index.html"
+            },
+            "Notre Aide":{
+               "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
+               "Site Support":"https://support.cloudwatt.com/index.html",
+               "Blog technique":"https://dev.cloudwatt.com/fr/blog/index.html",
+               "Forum communautaire":"https://dev.cloudwatt.com/fr/communaute.html"
+            },
+            "Nos Tarifs":{
+               "Tarifs":"https://www.cloudwatt.com/fr/produits/tarifs.html"
+            }
+         }
+      },
+      
+      "English":{
+         "Overview":{
+            "Our Offer":{
+               "Products":"https://www.cloudwatt.com/en/produits/",
+               "Solutions":"https://www.cloudwatt.com/en/solutions/",
+               "APIs Guides":"https://dev.cloudwatt.com/en/doc/api/index.html"
+            },
+            "Our Assistance":{
+               "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
+               "Site Support":"https://support.cloudwatt.com/index.html",
+               "Technical Bloge":"https://dev.cloudwatt.com/en/blog/index.html",
+               "Forum":"https://dev.cloudwatt.com/en/communaute.html"
+            },
+            "Our Tarification":{
+               "Tarification":"https://www.cloudwatt.com/en/produits/tarifs.html"
+            }
+         }
+      }
+   }
+}
