@@ -28,108 +28,99 @@
    },
    "helpMenus":{
       "fr":{
-         "1":{
-            "Overview":{
-               "1":{
-                  "Notre Offre":{
-                     "Produit":"https://www.cloudwatt.com/fr/produits/",
-                     "Solutions":"https://www.cloudwatt.com/fr/solutions/",
-                     "Référentiels des APIs":"https://dev.cloudwatt.com/fr/doc/api/index.html"
-                  }
-               },
-               "2":{
-                  "Notre Aide":{
-                     "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
-                     "Site Support":"https://support.cloudwatt.com/index.html",
-                     "Blog technique":"https://dev.cloudwatt.com/fr/blog/index.html",
-                     "Forum communautaire":"https://dev.cloudwatt.com/fr/communaute.html"
-                  }
-               },
-               "3":{
-                  "Nos Tarifs":{
-                     "Tarifs":"https://www.cloudwatt.com/fr/produits/tarifs.html"
-                  }
+         "overview":{
+            "1":{
+               "Notre Offre":{
+                  "Produit":"https://www.cloudwatt.com/fr/produits/",
+                  "Solutions":"https://www.cloudwatt.com/fr/solutions/",
+                  "Référentiels des APIs":"https://dev.cloudwatt.com/fr/doc/api/index.html"
+               }
+            },
+            "2":{
+               "Notre Aide":{
+                  "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
+                  "Site Support":"https://support.cloudwatt.com/index.html",
+                  "Blog technique":"https://dev.cloudwatt.com/fr/blog/index.html",
+                  "Forum communautaire":"https://dev.cloudwatt.com/fr/communaute.html"
+               }
+            },
+            "3":{
+               "Nos Tarifs":{
+                  "Tarifs":"https://www.cloudwatt.com/fr/produits/tarifs.html"
                }
             }
          },
-         "2":{
-            "Instances":{
-               "1":{
-                  "Notre Offre":{
-                     "Serveurs Cloud":"https://www.cloudwatt.com/fr/produits/serveurs/fonctionnalites.html"
-                  }
-               },
-               "2":{
-                  "Notre Aide":{
-                     "Créer une instance":"https://support.cloudwatt.com/debuter/cons-3-configurer-lancer-instance.html",
-                     "Opérer mes instances":"https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html",
-                     "Gérer l'affinité et l'anti-affinité":"https://support.cloudwatt.com/debuter/affinite-1.html",
-                     "Se connecter à une instance Linux":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-ssh.html",
-                     "Se connecter à une instance Windows":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-rdp.html",
-                     "Les utilisateurs par défaut des images":"https://support.cloudwatt.com/kb/faq/controle-d-acces/quels-sont-les-comptes-par-defaut-des-images-cloudwatt.html"
-                  }
-               },
-               "3":{
-                  "Nos Tarifs":{
-                     "Tarifs des serveurs virtuels":"https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs",
-                     "Suis-je facturé si mon instance est arrêtée ou en pause ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/suis-je-facture-si-mon-instance-est-arrete-ou-en-pause.html",
-                     "Comment sont facturés les instantanés (snapshots d'instances) ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html"
-                  }
+         "instances":{
+            "1":{
+               "Notre Offre":{
+                  "Serveurs Cloud":"https://www.cloudwatt.com/fr/produits/serveurs/fonctionnalites.html"
+               }
+            },
+            "2":{
+               "Notre Aide":{
+                  "Créer une instance":"https://support.cloudwatt.com/debuter/cons-3-configurer-lancer-instance.html",
+                  "Opérer mes instances":"https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html",
+                  "Gérer l'affinité et l'anti-affinité":"https://support.cloudwatt.com/debuter/affinite-1.html",
+                  "Se connecter à une instance Linux":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-ssh.html",
+                  "Se connecter à une instance Windows":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-rdp.html",
+                  "Les utilisateurs par défaut des images":"https://support.cloudwatt.com/kb/faq/controle-d-acces/quels-sont-les-comptes-par-defaut-des-images-cloudwatt.html"
+               }
+            },
+            "3":{
+               "Nos Tarifs":{
+                  "Tarifs des serveurs virtuels":"https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs",
+                  "Suis-je facturé si mon instance est arrêtée ou en pause ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/suis-je-facture-si-mon-instance-est-arrete-ou-en-pause.html",
+                  "Comment sont facturés les instantanés (snapshots d'instances) ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html"
                }
             }
          }
       },
       "en":{
-         "1":{
-            "Overview":{
-               "1":{
-                  "Our Offer":{
-                     "Products":"https://www.cloudwatt.com/en/produits/",
-                     "Solutions":"https://www.cloudwatt.com/en/solutions/",
-                     "APIs Guides":"https://dev.cloudwatt.com/en/doc/api/index.html"
-                  }
-               },
-               "2":{
-                  "Our Assistance":{
-                     "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
-                     "Site Support":"https://support.cloudwatt.com/index.html",
-                     "Technical Bloge":"https://dev.cloudwatt.com/en/blog/index.html",
-                     "Forum":"https://dev.cloudwatt.com/en/communaute.html"
-                  }
-               },
-               "3":{
-                  "Our Tarification":{
-                     "Tarification":"https://www.cloudwatt.com/en/produits/tarifs.html"
-                  }
+         "overview":{
+            "1":{
+               "Our Offer":{
+                  "Products":"https://www.cloudwatt.com/en/produits/",
+                  "Solutions":"https://www.cloudwatt.com/en/solutions/",
+                  "APIs Guides":"https://dev.cloudwatt.com/en/doc/api/index.html"
+               }
+            },
+            "2":{
+               "Our Assistance":{
+                  "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
+                  "Site Support":"https://support.cloudwatt.com/index.html",
+                  "Technical Bloge":"https://dev.cloudwatt.com/en/blog/index.html",
+                  "Forum":"https://dev.cloudwatt.com/en/communaute.html"
+               }
+            },
+            "3":{
+               "Our Tarification":{
+                  "Tarification":"https://www.cloudwatt.com/en/produits/tarifs.html"
                }
             }
          },
-         "2":{
-            "Instances":{
-               "1":{
-                  "Our Offer":{
-                     "Cloud Servers":"https://www.cloudwatt.com/fr/produits/serveurs/fonctionnalites.html"
-                  }
-               },
-               "2":{
-                  "Our Assistance":{
-                     "Create a server":"https://support.cloudwatt.com/debuter/cons-3-configurer-lancer-instance.html",
-                     "Use my instances":"https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html",
-                     "Gérer l'affinité et l'anti-affinité":"https://support.cloudwatt.com/debuter/affinite-1.html",
-                     "Connect to a Linux machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-ssh.html",
-                     "Connect to a Windows machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-rdp.html",
-                     "Default users for OS images":"https://support.cloudwatt.com/kb/faq/controle-d-acces/quels-sont-les-comptes-par-defaut-des-images-cloudwatt.html"
-                  }
-               },
-               "3":{
-                  "Our Tarification":{
-                     "Virtual servers tarfication":"https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs",
-                     "Am I factured when my instance is shutdown or stopped?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/suis-je-facture-si-mon-instance-est-arrete-ou-en-pause.html",
-                     "How are instances snapshots factured ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html"
-                  }
+         "instances":{
+            "1":{
+               "Our Offer":{
+                  "Cloud Servers":"https://www.cloudwatt.com/fr/produits/serveurs/fonctionnalites.html"
+               }
+            },
+            "2":{
+               "Our Assistance":{
+                  "Create a server":"https://support.cloudwatt.com/debuter/cons-3-configurer-lancer-instance.html",
+                  "Use my instances":"https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html",
+                  "Gérer l'affinité et l'anti-affinité":"https://support.cloudwatt.com/debuter/affinite-1.html",
+                  "Connect to a Linux machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-ssh.html",
+                  "Connect to a Windows machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-rdp.html",
+                  "Default users for OS images":"https://support.cloudwatt.com/kb/faq/controle-d-acces/quels-sont-les-comptes-par-defaut-des-images-cloudwatt.html"
+               }
+            },
+            "3":{
+               "Our Tarification":{
+                  "Virtual servers tarfication":"https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs",
+                  "Am I factured when my instance is shutdown or stopped?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/suis-je-facture-si-mon-instance-est-arrete-ou-en-pause.html",
+                  "How are instances snapshots factured ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html"
                }
             }
          }
       }
    }
-}
