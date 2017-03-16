@@ -11,7 +11,7 @@
       },
       "en":{
          "1":{
-            "type":"Maintenance Notice",
+            "type":"Maintenance Notice CLoud",
             "Date":"Thursday 23th March 2017 from 7:00 PM to 10:00 PM (Paris UTC/GMT +1)",
             "Description":"Security updates on hypervisors",
             "Potentiel Impact":"stop during one hour of the t1.cw.tiny and s1.cw.small-1 instances on region fr1",
