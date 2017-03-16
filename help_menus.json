@@ -13,7 +13,7 @@
          "1":{
             "type":"Avis de maintenance",
             "Date":"Thursday 23th March 2017 from 7:00 PM to 10:00 PM (Paris UTC/GMT +1)",
-            "Description":"security updates on hypervisors",
+            "Description":"XXXXXXXXXXXXXXXXXXXXXXXXsecurity updates on hypervisors",
             "Impact potentiel":"stop during one hour of the t1.cw.tiny and s1.cw.small-1 instances on region fr1",
             "Recommandation":"We are advising our customers to backup their t1.cw.tiny and s1.cw.small-1 instances.\nIt is also recommended to temporary resize the critical instances up to n1.cw.standard-1 flavor.\nIt will be possible to downgrade to s1.cw.small-1 instances, but the size of the root disk (50 GB) of the n1 flavors will not allow the downgrade to a t1.cw.tiny (20 Go) flavor.\nDo not hesitate to contact the support team for any question.\nRegards,\nCloudwatt Team – Orange Cloud for Business"
          }
