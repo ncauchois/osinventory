@@ -1,6 +1,26 @@
 {
-   "Notifications":"",
-   "help-menus":{
+   "notifications":{
+      "French":{
+         "1":{
+            "type":"Avis de maintenance",
+            "Date":"jeudi 23 mars 2017 de 19h00 à 22h00 (Paris UTC/GMT +1)",
+            "Description":"mises à jour logicielles de sécurité sur nos hyperviseurs",
+            "Impact potentiel":"arrêt d'une heure sur des instances t1.cw.tiny et s1.cw.small-1 de la région FR1",
+            "Recommandation":"Il est conseillé d'effectuer un snapshot préventif de gabarit t1.cw.tiny ou s1.cw.small-1.\nIl est également recommandé de redimensionner temporairement les instances critiques vers un gabarit de type n1.cw.standard-1.\nLe retour arrière sera possible vers le gabarit s1.cw.small-1, mais la taille disque racine (50 Go) des gabarits n1 ne permettra pas de revenir vers un gabarit t1.cw.tiny (20 Go).\nToute l'équipe support de l'offre Cloudwatt reste à votre disposition pour répondre à vos questions.\nCordialement,\nL'Equipe Cloudwatt – Orange Cloud for Business"
+         }
+      },
+      "English":{
+         "1":{
+            "type":"Avis de maintenance",
+            "Date":"Thursday 23th March 2017 from 7:00 PM to 10:00 PM (Paris UTC/GMT +1)",
+            "Description":"security updates on hypervisors",
+            "Impact potentiel":"stop during one hour of the t1.cw.tiny and s1.cw.small-1 instances on region fr1",
+            "Recommandation":"We are advising our customers to backup their t1.cw.tiny and s1.cw.small-1 instances.\nIt is also recommended to temporary resize the critical instances up to n1.cw.standard-1 flavor.\nIt will be possible to downgrade to s1.cw.small-1 instances, but the size of the root disk (50 GB) of the n1 flavors will not allow the downgrade to a t1.cw.tiny (20 Go) flavor.\nDo not hesitate to contact the support team for any question.\nRegards,\nCloudwatt Team – Orange Cloud for Business"
+         }
+
+      }
+   },
+   "helpMenus":{
       "French":{
          "Overview":{
             "Notre Offre":{
