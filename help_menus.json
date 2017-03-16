@@ -108,7 +108,7 @@
                "Our Assistance":{
                   "Create a server":"https://support.cloudwatt.com/debuter/cons-3-configurer-lancer-instance.html",
                   "Use my instances":"https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html",
-                  "Gérer l'affinité et l'anti-affinité":"https://support.cloudwatt.com/debuter/affinite-1.html",
+                  "Manage affinity ant-afinity":"https://support.cloudwatt.com/debuter/affinite-1.html",
                   "Connect to a Linux machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-ssh.html",
                   "Connect to a Windows machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-rdp.html",
                   "Default users for OS images":"https://support.cloudwatt.com/kb/faq/controle-d-acces/quels-sont-les-comptes-par-defaut-des-images-cloudwatt.html"
