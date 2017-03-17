@@ -3,124 +3,28 @@
       "fr":{
          "1":{
             "type":"Avis de maintenance",
-            "Date":"jeudi 23 mars 2017 de 19h00 à 22h00 (Paris UTC/GMT +1)",
-            "Description":"mises à jour logicielles de sécurité sur nos hyperviseurs",
-            "Impact potentiel":"arrêt d'une heure sur des instances t1.cw.tiny et s1.cw.small-1 de la région FR1",
-            "Recommandation":"Il est conseillé d'effectuer un snapshot préventif de gabarit t1.cw.tiny ou s1.cw.small-1.<br>Il est également recommandé de redimensionner temporairement les instances critiques vers un gabarit de type n1.cw.standard-1.\nLe retour arrière sera possible vers le gabarit s1.cw.small-1, mais la taille disque racine (50 Go) des gabarits n1 ne permettra pas de revenir vers un gabarit t1.cw.tiny (20 Go).\nToute l'équipe support de l'offre Cloudwatt reste à votre disposition pour répondre à vos questions.<br>Cordialement,<br>L'Equipe Cloudwatt – Orange Cloud for Business"
+            "date":"jeudi 23 mars 2017 de 19h00 à 22h00 (Paris UTC/GMT +1)",
+            "description":"mises à jour logicielles de sécurité sur nos hyperviseurs",
+            "impact":"arrêt d'une heure sur des instances t1.cw.tiny et s1.cw.small-1 de la région FR1",
+            "recommandation":"Il est conseillé d'effectuer un snapshot préventif de gabarit t1.cw.tiny ou s1.cw.small-1.\
+                              &nbsp;Il est également recommandé de redimensionner temporairement les instances critiques vers un gabarit de type n1.cw.standard-1.\
+                              &nbsp;Le retour arrière sera possible vers le gabarit s1.cw.small-1, mais la taille disque racine (50 Go) des gabarits n1 ne permettra pas de revenir vers un gabarit t1.cw.tiny (20 Go)\
+                              &nbsp;Toute l'équipe support de l'offre Cloudwatt reste à votre disposition pour répondre à vos questions.\
+                              &nbsp;Cordialement,\
+                              &nbsp;L'Equipe Cloudwatt – Orange Cloud for Business"
          }
       },
       "en":{
          "1":{
-            "type":"Maintenance Notice CLouxxxxd",
-            "Date":"Thursday 23th March 2017 from 7:00 PM to 10:00 PM (Paris UTC/GMT +1)",
-            "Description":"Security updates on hypervisors",
-            "Potentiel Impact":"stop during one hour of the t1.cw.tiny and s1.cw.small-1 instances on region fr1",
-            "Recommandation":"We are advising our customers to backup their t1.cw.tiny and s1.cw.small-1 instances.<br>It is also recommended to temporary resize the critical instances up to n1.cw.standard-1 flavor.<br>It will be possible to downgrade to s1.cw.small-1 instances, but the size of the root disk (50 GB) of the n1 flavors will not allow the downgrade to a t1.cw.tiny (20 Go) flavor.\nDo not hesitate to contact the support team for any question.<br>Regards,<br>Cloudwatt Team – Orange Cloud for Business"
-         },
-         "2":{
-            "type":"Suggestion Cristophe",
-            "Date":"Thursday 23th March 2017 from 7:00 PM to 10:00 PM (Paris UTC/GMT +1)",
-            "Description":"Will see later",
-            "Potentiel Impact":"stop during one hour of the t1.cw.tiny and s1.cw.small-1 instances on region fr1",
-            "Recommandation":"We are advising our customers to backup their t1.cw.tiny and s1.cw.small-1 instances.<br>It is also recommended to temporary resize the critical instances up to n1.cw.standard-1 flavor.\nIt will be possible to downgrade to s1.cw.small-1 instances, but the size of the root disk (50 GB) of the n1 flavors will not allow the downgrade to a t1.cw.tiny (20 Go) flavor.<br>Do not hesitate to contact the support team for any question.<br>Regards,<br>Cloudwatt Team – Orange Cloud for Business"
-         }
-      }
-   },
-   "helpMenus":{
-      "fr":{
-         "overview":{
-            "1":{
-               "Notre Offre":{
-                  "Produit":"https://www.cloudwatt.com/fr/produits/",
-                  "Solutions":"https://www.cloudwatt.com/fr/solutions/",
-                  "Référentiels des APIs":"https://dev.cloudwatt.com/fr/doc/api/index.html"
-               }
-            },
-            "2":{
-               "Notre Aide":{
-                  "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
-                  "Site Support":"https://support.cloudwatt.com/index.html",
-                  "Blog technique":"https://dev.cloudwatt.com/fr/blog/index.html",
-                  "Forum communautaire":"https://dev.cloudwatt.com/fr/communaute.html"
-               }
-            },
-            "3":{
-               "Nos Tarifs":{
-                  "Tarifs":"https://www.cloudwatt.com/fr/produits/tarifs.html"
-               }
-            }
-         },
-         "instances":{
-            "1":{
-               "Notre Offre":{
-                  "Serveurs Cloud":"https://www.cloudwatt.com/fr/produits/serveurs/fonctionnalites.html"
-               }
-            },
-            "2":{
-               "Notre Aide":{
-                  "Créer une instance":"https://support.cloudwatt.com/debuter/cons-3-configurer-lancer-instance.html",
-                  "Opérer mes instances":"https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html",
-                  "Gérer l'affinité et l'anti-affinité":"https://support.cloudwatt.com/debuter/affinite-1.html",
-                  "Se connecter à une instance Linux":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-ssh.html",
-                  "Se connecter à une instance Windows":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-rdp.html",
-                  "Les utilisateurs par défaut des images":"https://support.cloudwatt.com/kb/faq/controle-d-acces/quels-sont-les-comptes-par-defaut-des-images-cloudwatt.html"
-               }
-            },
-            "3":{
-               "Nos Tarifs":{
-                  "Tarifs des serveurs virtuels":"https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs",
-                  "Suis-je facturé si mon instance est arrêtée ou en pause ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/suis-je-facture-si-mon-instance-est-arrete-ou-en-pause.html",
-                  "Comment sont facturés les instantanés (snapshots d'instances) ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html"
-               }
-            }
-         }
-      },
-      "en":{
-         "overview":{
-            "1":{
-               "Our Offer":{
-                  "Products":"https://www.cloudwatt.com/en/produits/",
-                  "Solutions":"https://www.cloudwatt.com/en/solutions/",
-                  "APIs Guides":"https://dev.cloudwatt.com/en/doc/api/index.html"
-               }
-            },
-            "2":{
-               "Our Assistance":{
-                  "Guides de prises en main":"https://support.cloudwatt.com/debuter/index.html",
-                  "Site Support":"https://support.cloudwatt.com/index.html",
-                  "Technical Bloge":"https://dev.cloudwatt.com/en/blog/index.html",
-                  "Forum":"https://dev.cloudwatt.com/en/communaute.html"
-               }
-            },
-            "3":{
-               "Our Tarification":{
-                  "Tarification":"https://www.cloudwatt.com/en/produits/tarifs.html"
-               }
-            }
-         },
-         "instances":{
-            "1":{
-               "Our Offer":{
-                  "Cloud Servers":"https://www.cloudwatt.com/fr/produits/serveurs/fonctionnalites.html"
-               }
-            },
-            "2":{
-               "Our Assistance":{
-                  "Create a server":"https://support.cloudwatt.com/debuter/cons-3-configurer-lancer-instance.html",
-                  "Use my instances":"https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html",
-                  "Manage affinity ant-afinity":"https://support.cloudwatt.com/debuter/affinite-1.html",
-                  "Connect to a Linux machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-ssh.html",
-                  "Connect to a Windows machine":"https://support.cloudwatt.com/kb/faq/controle-d-acces/comment-se-connecter-en-rdp.html",
-                  "Default users for OS images":"https://support.cloudwatt.com/kb/faq/controle-d-acces/quels-sont-les-comptes-par-defaut-des-images-cloudwatt.html"
-               }
-            },
-            "3":{
-               "Our Tarification":{
-                  "Virtual servers tarfication":"https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs",
-                  "Am I factured when my instance is shutdown or stopped?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/suis-je-facture-si-mon-instance-est-arrete-ou-en-pause.html",
-                  "How are instances snapshots factured ?":"https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html"
-               }
-            }
+            "type":"Maintenance Notice",
+            "date":"Thursday 23th March 2017 from 7:00 PM to 10:00 PM (Paris UTC/GMT +1)",
+            "description":"Security updates on hypervisors",
+            "impact":"stop during one hour of the t1.cw.tiny and s1.cw.small-1 instances on region fr1",
+            "recommandation":"We are advising our customers to backup their t1.cw.tiny and s1.cw.small-1 instances.\
+                              &nbsp;It is also recommended to temporary resize the critical instances up to n1.cw.standard-1 flavor.\
+                              &nbsp;It will be possible to downgrade to s1.cw.small-1 instances, but the size of the root disk (50 GB) of the n1 flavors will not allow the downgrade to a t1.cw.tiny (20 Go) flavor.\
+                              &nbsp;Do not hesitate to contact the support team for any question.<br>Regards,\
+                              &nbsp;Cloudwatt Team – Orange Cloud for Business"
          }
       }
    }
