@@ -7,8 +7,8 @@
             "date":"Jeudi 23 mars 2017 de 19h00 à 22h00 (Paris UTC/GMT +1)",
             "description":"Mises à jour logicielles de sécurité sur nos hyperviseurs",
             "impact":"Arrêt d'une heure sur des instances t1.cw.tiny et s1.cw.small-1<br>de la région FR1",
-            "recommandation":"Il est conseillé d'effectuer un snapshot préventif de gabarit<br>t1.cw.tiny ou s1.cw.small-1.<br>Il est également recommandé de redimensionner temporairement<br>les instances critiques vers un gabarit de type n1.cw.standard-1.<br>Le retour arrière sera possible vers le gabarit s1.cw.small-1,<br>mais la taille disque racine (50 Go) des gabarits n1<br>ne permettra pas de revenir vers un gabarit t1.cw.tiny(20 GO)<br>Toute l'équipe support de l'offre Cloudwatt reste à votre disposition<br>pour répondre à vos questions.<br>Cordialement,<br>L'Equipe Cloudwatt – Orange Cloud for Business"
-         }
+           e "recommandation":"Il est conseillé d'effectuer un snapshot préventif de gabarit<br>t1.cw.tiny ou s1.cw.small-1.<br>Il est également recommandé de redimensionner temporairement<br>les instances critiques vers un gabarit de type n1.cw.standard-1.<br>Le retour arrière sera possible vers le gabarit s1.cw.small-1,<br>mais la taille disque racine (50 Go) des gabarits n1<br>ne permettra pas de revenir vers un gabarit t1.cw.tiny(20 GO)<br>Toute l'équipe support de l'offre Cloudwatt reste à votre disposition<br>pour répondre à vos questions.<br>Cordialement,<br>L'Equipe Cloudwatt – Orange Cloud for Business"
+         
       },
       "en":{
          "1":{
