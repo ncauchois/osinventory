@@ -3,7 +3,7 @@
    "notifications":{
       "fr":{
          "1":{
-            "type":"Avis de maintenance",
+            "type":"Avis de mahjkfhgfgintenance",
             "date":"Jeudi 23 mars 2017 de 19h00 à 22h00 (Paris UTC/GMT +1)",
             "description":"Mises à jour logicielles de sécurité sur nos hyperviseurs",
             "impact":"Arrêt d'une heure sur des instances t1.cw.tiny et s1.cw.small-1<br>de la région FR1",
