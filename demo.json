@@ -7,7 +7,7 @@
             "description":"Désactivation flavor n2",
             "impact":"Explosions imminente",
             "recommandation":" il est conseillé d'effectuer un snapshot préventif<br>des instances de gabarit t1.cw.tiny ou s1.cw.small-1.<br>Il est également recommandé de redimensionner temporairement<br>les instances critiques vers un gabarit de type n1.cw.standard-1.<br>Le retour arrière sera possible vers le gabarit s1.cw.small-1,<br>mais la taille disque racine (50 Go) des gabarits n1<br>ne permettra pas de revenir vers un gabarit t1.cw.tiny (20 Go).<br><br>Toute l'équipe support de l'offre Cloudwatt reste à votre<br>disposition pour répondre à vos questions.<br><br>L'équipe Cloudwatt – Orange Cloud for Business"
-         }
+         },
          "2":{
             "type":"Avis de maintenance",
             "date":"Jeudi 23 mars 2017 de 19h00 à 22h00 (Paris UTC/GMT +1)",
