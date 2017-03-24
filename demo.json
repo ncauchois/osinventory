@@ -1,7 +1,7 @@
 {
    "notifications":{
       "fr":{
-         "1:{
+         "1":{
             "type":"Avis de maintenance",
             "date":"Vendredi 24 Juin 2017 de 19h00 à 22h00 (Paris UTC/GMT +1)",
             "description":"Désactivation flavor n2",
