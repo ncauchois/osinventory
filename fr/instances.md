@@ -8,8 +8,9 @@ Notre Aide
 *   [Opérer mes instances](https://support.cloudwatt.com/kb/faq/serveurs-cloud/quelles-sont-les-principales-actions-realisables-sur-mon-instance-et-quelles-sont-les-limitations.html)          
 *   [Gérer l'affinité et l'anti-affinité](https://support.cloudwatt.com/debuter/affinite-1.html)    
 *   [Se connecter à une instance Linux](https://dev.cloudwatt.com/fr/communaute.html)  
-*   [Se connecter à une instance Windows](https://dev.cloudwatt.com/fr/communaute.html)                                         
-*   [Les utilisateurs par défaut des images](https://dev.cloudwatt.com/fr/communaute.html)                                                                     
+*   [Se connecter à une instance Windows](https://dev.cloudwatt.com/fr/communaute.html)                                     
+*   [Les utilisateurs par défaut des images](https://dev.cloudwatt.com/fr/communaute.html) 
+   
 Nos Tarifs                                                            
                                                                       
 *   [Tarifs des serveurs virtuels](https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs)
