@@ -11,7 +11,7 @@ Our Assistance
 *   [Connect to a windows instance](https://dev.cloudwatt.com/fr/communaute.html)                                     
 *   [Default user for images](https://dev.cloudwatt.com/fr/communaute.html) 
    
-Our Tarficiation                                                           
+Our Pricing                                                           
                                                                       
 *   [Virtual server's tarification](https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs)
 *   [Am I factured when my instance is shutdown or in pause?](https://support.cloudwatt.com/kb/faq/paiement-et-facturation/suis-je-facture-si-mon-instance-est-arrete-ou-en-pause.html)
