@@ -1,16 +1,14 @@
-Notre Offre                                                           
-                                                                      
-*   [Stockage bloc](https://www.cloudwatt.com/fr/produits/stockage-bloc/)                
-                         
-Notre Aide                                                            
-                                                                      
-*   [Créer un volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-creer-un-volume.html)                              
-*   [Attacher et détacher un volume à une instance](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-attacher-detacher-un-volume-a-une-instance.html)          
-*   [Augmenter la taille d'un volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-augmenter-la-taille-d-un-volume.html)    
-*   [Supprimer un volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-supprimer-un-volume.html)  
 
-Nos Tarifs                                                            
+Our Offer                                                          
                                                                       
-*   [Tarifs stockage bloc](https://www.cloudwatt.com/fr/produits/tarifs.html#stockage-bloc)
-*   [Comment mes instantanés de volumes sont-ils facturés ?](https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html)
-*   [Les volumes en statut erreur sont-ils facturés ?](https://support.cloudwatt.com/kb/faq/stockage-bloc/mes-volumes-en-statut-erreur-sont-ils-factures.html)
+*   [Images](https://support.cloudwatt.com/kb/images.html)                
+                         
+Our Assistance                                                            
+                                                                      
+*   [Can I sue my own windows servers's licences ?](https://support.cloudwatt.com/kb/faq/serveurs-cloud/puis-je-utiliser-mes-propres-licences-windows-server.html)                              
+*   [Can I install different Linux distribution than those proposed ?](https://support.cloudwatt.com/kb/faq/serveurs-cloud/puis-je-installer-des-versions-de-distribution-linux-differentes-de-celles-qui-sont-proposees.html)          
+*   [What does our proposed images contain ?](https://support.cloudwatt.com/kb/faq/serveurs-cloud/que-contiennent-les-images-fournies-par-cloudwatt.html)    
+
+Our Tarficiation                                                            
+                                                                      
+*   [Virtual servers tarification](https://www.cloudwatt.com/fr/produits/tarifs.html#serveurs)
