@@ -1,5 +1,5 @@
 
-Bienvenu                                                            
+Bienvenue                                                            
                                                                      
 *   [Notre guide de prise en main.](https://support.cloudwatt.com/debuter/index.htm)                
 *   [L'utilisation de nos API OpenStack.](https://dev.cloudwatt.com/fr/debuter/index.html)              
