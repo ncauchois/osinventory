@@ -1,16 +1,14 @@
-Notre Offre                                                           
-                                                                      
-*   [Stockage bloc](https://www.cloudwatt.com/fr/produits/stockage-bloc/)                
-                         
-Notre Aide                                                            
-                                                                      
-*   [Créer un volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-creer-un-volume.html)                              
-*   [Attacher et détacher un volume à une instance](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-attacher-detacher-un-volume-a-une-instance.html)          
-*   [Augmenter la taille d'un volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-augmenter-la-taille-d-un-volume.html)    
-*   [Supprimer un volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-supprimer-un-volume.html)  
 
-Nos Tarifs                                                            
+Our Offer                                                           
                                                                       
-*   [Tarifs stockage bloc](https://www.cloudwatt.com/fr/produits/tarifs.html#stockage-bloc)
-*   [Comment mes instantanés de volumes sont-ils facturés ?](https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html)
-*   [Les volumes en statut erreur sont-ils facturés ?](https://support.cloudwatt.com/kb/faq/stockage-bloc/mes-volumes-en-statut-erreur-sont-ils-factures.html)
+*   [Object Storage](https://www.cloudwatt.com/en/produits/stockage-objet/)                
+                         
+Our Assistance                                                            
+                                                                      
+*   [Our guides](https://www.cloudwatt.com/en/produits/stockage-objet/documentation.html)                              
+*   [Configure S3 browser](https://support.cloudwatt.com/kb/faq/stockage-objet/configurer-s3-browser.html)          
+*   [FAQ Bloc Storage](https://support.cloudwatt.com/kb/faq/stockage-bloc/index.html)    
+
+Our Tarification
+
+*   [Tarification object storage](https://www.cloudwatt.com/en/produits/stockage-objet/tarifs.html)
