@@ -1,18 +1,19 @@
 Our Offer                                                            
                                                                       
-*   [Products](https://www.cloudwatt.com/fr/produits/)                
-*   [Solutions](https://www.cloudwatt.com/fr/solutions/)              
-*   [APIs guide](https://dev.cloudwatt.com/fr/doc/api/index.html )                                                               
+*   [Products](https://www.cloudwatt.com/en/products.html)                
+*   [Features](https://www.cloudwatt.com/en/features.html)              
+*   [Services](https://www.cloudwatt.com/en/services.html)              
+*   [APIs guide](https://dev.cloudwatt.com/en/doc/api/index.html )                                                               
                                                                       
 Our Assistance                                                            
                                                                       
-*   [Hands on guide](https://support.cloudwatt.com/debuter/i
+*   [Hands on guide (in french)](https://support.cloudwatt.com/debuter/i
 ndex.html)                                                            
-*   [Support Website](https://support.cloudwatt.com/index.html)          
-*   [Technical Blog](https://dev.cloudwatt.com/fr/blog/index.html)    
-*   [Community Forum](https://dev.cloudwatt.com/fr/communaute.html
+*   [Support Website (in french)](https://support.cloudwatt.com/index.html)          
+*   [Technical Blog](https://dev.cloudwatt.com/en/blog/index.html)    
+*   [Community Forum](https://dev.cloudwatt.com/en/community.html
 )                                                                     
                                                                       
 Our Tarification                                                            
                                                                       
-*   [Tarification](https://www.cloudwatt.com/fr/produits/tarifs.html)
+*   [Tarification](https://www.cloudwatt.com/en/pricing.html)
