@@ -2,7 +2,7 @@
 Our Offer                                                          
                                                                       
 *   [Images (in french)](https://support.cloudwatt.com/kb/images.html)                
-                         
+                                                                                     
 Our Assistance (in french)                                                           
                                                                       
 *   [Can I sue my own windows servers's licences ?](https://support.cloudwatt.com/kb/faq/serveurs-cloud/puis-je-utiliser-mes-propres-licences-windows-server.html)                              
