@@ -7,7 +7,7 @@ Our Assistance (in french)
 *   [Create a volumes](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-creer-un-volume.html)                              
 *   [Attache and detach a volumes](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-attacher-detacher-un-volume-a-une-instance.html)          
 *   [Increase the size of a volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-augmenter-la-taille-d-un-volume.html)    
-*   [Delete a volumes](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-supprimer-un-volume.html)  
+*   [Delete a volume](https://support.cloudwatt.com/kb/faq/stockage-bloc/comment-supprimer-un-volume.html)  
 
 Our Tarification                                                           
                                                                       
