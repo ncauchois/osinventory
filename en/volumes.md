@@ -12,5 +12,5 @@ Our Assistance (in french)
 Our Tarification                                                           
                                                                       
 *   [Bloc storage tarification](https://www.cloudwatt.com/en/pricing.html)
-*   [How are volume snapshots factured (in french)] ?(https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html)
+*   [How are volume snapshots factured (in french)?](https://support.cloudwatt.com/kb/faq/paiement-et-facturation/comment-mes-instantanes-sont-ils-factures.html)
 *   [Are volumes in error state factured? (in french)](https://support.cloudwatt.com/kb/faq/stockage-bloc/mes-volumes-en-statut-erreur-sont-ils-factures.html)
